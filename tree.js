@@ -1,4 +1,5 @@
 const MAX_DEPTH = 12;
+const MAX_LEN =180;
 
 const canvas = document.querySelector('#canvas');
 
@@ -12,10 +13,10 @@ function randomInt(min, max) {
 function draw(ctx) {
     ctx.fillStyle = "black";
     ctx.fillRect(0, 0, canvas.width, canvas.height)
-    branch(ctx, canvas.width / 2, canvas.height, -90, 12, 180);
+    branch(ctx, canvas.width / 2, canvas.height);
 }
 
-function branch(context, startX, startY, angle, depth, length) {
+function branch(context, startX, startY, angle = -90, depth = MAX_DEPTH, length = MAX_LEN) {
     if (depth === 0) return;
 
     const r = randomInt(-10, 10)
