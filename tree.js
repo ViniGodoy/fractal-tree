@@ -4,11 +4,7 @@ const MAX_LEN =180;
 const canvas = document.querySelector('#canvas');
 
 const toRad = (angDeg) => angDeg * Math.PI / 180;
-
-function randomInt(min, max) {
-    const c = Math.ceil(min);
-    return Math.floor(Math.random() * (Math.floor(max) - c) + c);
-}
+const randomInt = (min, max) => Math.floor(Math.random() * (max - min) + min);
 
 function draw(ctx) {
     ctx.fillStyle = "black";
@@ -37,8 +33,8 @@ function branch(context, startX, startY, angle = -90, depth = MAX_DEPTH, length 
 }
 
 
-if (!canvas.getContext) {
-    alert("Canvas não disponível!")
-} else {
+if (canvas.getContext) {
     draw(canvas.getContext('2d'));
+} else {
+    alert("Sorry, no cake for you. :(")
 }
